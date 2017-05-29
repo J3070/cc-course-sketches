@@ -49,7 +49,7 @@ void draw() {
     // draw a rectangle with a small random variation in size
     stroke(170); // set the stroke colour to a light grey
     fill(0, 150); // set the fill colour to black with transparency
-    rect(mouseX, mouseY, random(6), random(6));
+    rect(mouseX, mouseY, 25, random(6));
   }
 
 
