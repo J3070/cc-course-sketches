@@ -32,7 +32,7 @@ float counterClockwiseBranchX, counterClockwiseBranchY;
 float clockwiseBranchX, clockwiseBranchY;
 
 void setup() {
-  size(500, 500);
+  size(1200, 500);
   background(0);
   rectMode(CENTER);  // rectangles drawn from the centre
 
@@ -40,6 +40,64 @@ void setup() {
   angle = 0;
   inc = 0;
   
+}
+
+
+void draw() {
+
+  /* draw a rectangle at your mouse point while you are pressing 
+   the left mouse button */
+
+  // map the mouse x position to the range (0.01, 0.08)
+  inc = map(mouseX, 0, width, 0.01, 0.08);
+
+  // incremment the current angle
+  angle = angle + inc;
+
+  if (mousePressed) {
+
+    stroke(170); 
+    fill(120, 60);
+
+    rect(mouseX, mouseY, 2, 2);
+
+    line(mouseX, mouseY, pmouseX, pmouseY); // pmouse is the mouse position at the previous frame
+
+    // oscillate the radius over time
+    float radius = 150 * abs( sin(frameCount) );
+    
+    //Counter-clockwise branch
+    //Look at https://commons.wikimedia.org/wiki/File:Circle_cos_sin.gif to remind yourself on the use of sin and cos
+    counterClockwiseBranchX = mouseX + radius * cos( angle);
+    counterClockwiseBranchY = mouseY + radius * sin( angle);
+    
+    //clockwise branch
+    clockwiseBranchX = mouseX + radius * cos( -angle);
+    clockwiseBranchY = mouseY + radius * sin( -angle);
+    
+    //set the brush to translucent white
+    stroke(110, 100);
+    
+    // draw branches
+    line(mouseX, mouseY, clockwiseBranchX, clockwiseBranchY);
+    line(mouseX, mouseY, counterClockwiseBranchX, counterClockwiseBranchY);
+    
+    //draw randomly sized circles at the end of each branch
+    float circleSize = random(3);
+    ellipse(clockwiseBranchX, clockwiseBranchY, circleSize, circleSize);
+    ellipse(counterClockwiseBranchX, counterClockwiseBranchY, circleSize, circleSize);
+  }
+
+
+  // save your drawing when you press keyboard 's'
+  if (keyPressed == true && key == 's') {
+    saveFrame("yourName.jpg");
+  }
+
+  // erase your drawing when you press keyboard 'r'
+  if (keyPressed == true && key == 'r') {
+    background(0);
+  }
 }
 
 
