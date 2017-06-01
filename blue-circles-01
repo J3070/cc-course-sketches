@@ -1,0 +1,18 @@
+///This sketch draws large blue ellipses on a white canvas
+
+void setup() {
+  //canvas size
+  size(1000, 500);
+  //background colour
+  background(255);
+}
+
+void draw(){
+  if (mousePressed) {
+    noFill();
+    //blue outline
+    stroke(#110E48);
+    strokeWeight(random(0.1, 1.4));
+    ellipse(mouseX, mouseY, random(18, 220), random(18, 220));
+  }
+}
