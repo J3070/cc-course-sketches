@@ -1,4 +1,5 @@
 /*
+ *
  * Creative Coding
  * Week 1, 01 - Draw your name!
  * by Indae Hwang and Jon McCormack
@@ -32,7 +33,7 @@ void setup() {
   size(500, 500);
 
   // set the background colour to white
-  background(255);
+  background(#FFECE5);
 
   // set the rectangle mode to draw from the centre with a specified radius
   rectMode(RADIUS);
@@ -47,9 +48,9 @@ void draw() {
 
   if (mousePressed) {
     // draw a rectangle with a small random variation in size
-    stroke(170); // set the stroke colour to a light grey
-    fill(0, 150); // set the fill colour to black with transparency
-    rect(mouseX, mouseY, random(6), random(6));
+    stroke(#04062C); // set the stroke colour to a light grey
+    fill(0, 150, 300); // set the fill colour to black with transparency
+    rect(mouseX, mouseY, random(18), random(12));
   }
 
 
