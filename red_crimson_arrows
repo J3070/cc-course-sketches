@@ -1,0 +1,21 @@
+void setup() {
+  size(1000, 670);
+  background(#2C2B2B);
+}
+
+void draw(){
+  if (mousePressed){
+    noStroke();
+    fill(#4D0000);
+    triangle(mouseX, mouseY, mouseX + random(100), mouseY + random(70), mouseX -15, mouseY -4);
+  }
+  
+  if (keyPressed == true && key =='g') {
+    fill(#340101);
+    triangle(random(300), random(300, 500), random(20), random(40), random(20), random(80));
+  }
+  if (keyPressed == true && key =='r') {
+    background(#2C2B2B);
+  
+  }
+}
