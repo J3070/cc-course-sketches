@@ -54,8 +54,11 @@ void draw() {
 
       float tx = margin + cellsize/2  + (cellsize + gutter) * j;
       float ty = margin + cellsize/2  + (cellsize + gutter) * i;
-
+      if (circleNumber %2== 0){
       movingCircle(tx, ty, cellsize, circleNumber * TWO_PI * millis() / 60000.0);
+      } else {
+      movingCircle2(tx, ty, cellsize, circleNumber * TWO_PI * millis() / 60000.0);
+      }
     }
   }
 }//end of draw 
@@ -75,3 +78,19 @@ void movingCircle(float x, float y, float size, float angle) {
   stroke(255, 0, 0);
   line(x, y, endpointX, endpointY); // red line
 }
+
+  void movingCircle2(float x, float y, float size, float angle) {
+
+  // calculate endpoint of the line
+  float endpointX = x + (size / 2) * cos(angle);
+  float endpointY = y + (size / 2) * sin(angle);
+
+  stroke(0);
+  strokeWeight(1);
+  fill(140, 180);
+  rect(x, y, size, size); // circle
+
+  stroke(255, 0, 0);
+  line(x, y, endpointX, endpointY); // red line
+  }
+
